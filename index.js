@@ -227,6 +227,7 @@ const products = [
 const div = document.querySelector('#display');
 
 let renderAllItems = ()=>{
+    div.innerHTML = "";
     products.map((event)=>{
 
         div.innerHTML +=`
@@ -241,7 +242,17 @@ renderAllItems();
 
 
 let filtered = (btn)=>{
-    console.log(btn.innerHTML);
+    div.innerHTML = '';
+    let filteredItem = products.filter((items)=>{
+        return items.category === btn.innerHTML;
+    }).map((items)=>{
+        div.innerHTML +=`
+        <h1>${items.category}</h1>
+        <h3>${items.brand} ${items.name} </h3>
+        <h4>${items.price} </h4>
+        <hr>`
+
+    })
 
 }
 
